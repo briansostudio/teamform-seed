@@ -1,0 +1,11 @@
+{
+    "browsers": ["Chrome","Firefox","Safari","IE"],
+    "plugins": [
+        "karma-chrome-launcher",
+        "karma-firefox-launcher",
+        "karma-ie-launcher",
+        "karma-safari-launcher",
+        "karma-jasmine",
+        "karma-coverage"
+    ]
+}

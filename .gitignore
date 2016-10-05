@@ -1,4 +1,5 @@
 .idea
+/config/local.json
 !.gitkeep
 node_modules/
 bower_components/

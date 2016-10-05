@@ -1,4 +1,17 @@
 //jshint strict: false
+var fs = require('fs');
+var localSetting;
+if(fs.existsSync('./config/local.json')){
+	localSetting = JSON.parse(fs.readFileSync('./config/local.json'));
+}else{
+	var file = fs.readFileSync('./config/local.example.json');
+	localSetting = JSON.parse(file);
+	fs.writeFile('./config/local.json', file);
+}
+// var json = fs.readFileSync('./config/local.json');
+// console.log(json);
+//var json = fs.readFileSync('./config/local.example.json');
+
 module.exports = function(config) {
   config.set({
 
@@ -31,13 +44,8 @@ module.exports = function(config) {
 	},
 	port: 8080,
 	colors: true,
-    browsers: ['Chrome'],
+    browsers: localSetting.browsers,
 	singleRun: true,
-    plugins: [
-      'karma-chrome-launcher',      
-      'karma-jasmine',
-	  'karma-coverage'
-    ]    
-
+    plugins: localSetting.plugins
   });
 };
